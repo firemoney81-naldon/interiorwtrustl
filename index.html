@@ -1,23 +1,376 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
+ <!-- Schema.org LocalBusiness 마크업(JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HomeAndConstructionBusiness",
+    "name": "23평 인테리어 전문 컨설팅",
+    "image": "https://도메인/로고.png",
+    "url": "https://도메인/23평인테리어비용",
+    "telephone": "031-123-4567",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "경기도 평택시 ○○로 ○○",
+      "addressLocality": "평택시",
+      "addressRegion": "경기",
+      "postalCode": "17900",
+      "addressCountry": "KR"
+    },
+    "areaServed": [
+      { "@type": "City", "name": "서울" },
+      { "@type": "City", "name": "수원시" },
+      { "@type": "City", "name": "인천시" },
+      { "@type": "City", "name": "부산시" }
+    ],
+    "priceRange": "₩₩₩",
+    "description": "23평 인테리어 비용 안내, 평당 견적, 업체 선정 노하우, 내돈내산 후기"
+  }
+  </script>
+
+  <!-- Google Fonts for professional look -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap">
+
+  <style>
+    /* 다채롭고 부드러운 색감 + 명확한 계층 구조 */
+    body { font-family: 'Noto Sans KR', sans-serif; margin:0; padding:0; background:#f5f8fb; color:#333; line-height:1.7; }
+    header { background:#e1f0fa; padding:40px 20px; text-align:center; box-shadow:0 4px 10px rgba(0,0,0,0.05); }
+    main { max-width:900px; margin:20px auto; padding:20px; }
+    section { background:#ffffff; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.05); margin-bottom:25px; padding:30px; border-top:5px solid #a3c4ff; }
+
+    /* 헤딩 스타일 - 부드러운 색상과 명확한 계층 */
+    h1 { font-size:2.8rem; color:#0b3d91; margin-bottom:15px; font-weight:700; }
+    h2 { font-size:2rem; color:#2c5da0; border-bottom:3px solid #e0eaf6; padding-bottom:10px; margin-top:25px; }
+    h3 { font-size:1.6rem; color:#4285f4; margin-top:20px; border-left:4px solid #4285f4; padding-left:15px; }
+
+    /* 텍스트 스타일 개선 */
+    p, li, dl { font-size:1.05rem; line-height:1.8; color:#555; }
+    ul, ol { padding-left:25px; margin-bottom:20px; }
+    li { margin-bottom:10px; }
+
+    /* 테이블 스타일 */
+    table { width:100%; border-collapse: separate; border-spacing: 0; margin:25px 0; border:1px solid #e0eaf6; border-radius:8px; overflow:hidden; }
+    th, td { padding:14px 20px; text-align:left; font-size:1rem; border-bottom:1px solid #e0eaf6; }
+    th { background:#f0f6ff; color:#333; font-weight:700; border-right:1px solid #e0eaf6; }
+    td { background:#ffffff; color:#555; }
+    th:last-child, td:last-child { border-right:none; }
+
+    /* CTA 버튼 스타일 */
+    .btn-cta {
+      display:inline-block;
+      padding:16px 35px;
+      background:#4285f4;
+      color:#fff;
+      font-weight:700;
+      border:none;
+      border-radius:30px;
+      box-shadow:0 8px 15px rgba(66, 133, 244, 0.3);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      text-decoration:none;
+      font-size:1.1rem;
+      text-align:center;
+      margin-top:20px;
+    }
+    .btn-cta:hover {
+      background:#3367d6;
+      transform:translateY(-2px);
+    }
+
+    /* 네비게이션 스타일 */
+    nav { max-width:900px; margin:20px auto; background:#fff; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.05); padding:15px; }
+    nav ul { list-style:none; padding:0; display:flex; flex-wrap:wrap; justify-content:center; }
+    nav li { margin:8px 15px; }
+    nav a { text-decoration:none; color:#555; font-weight:500; padding:8px 15px; border-radius:20px; transition:background-color 0.3s ease; }
+    nav a:hover { background:#f0f6ff; color:#0b3d91; }
+
+    /* 폼 스타일 */
+    .contact-form { background:#f9f9f9; padding:25px; border-radius:10px; border:1px solid #e0eaf6; }
+    .contact-form label { display:block; margin-bottom:8px; font-weight:bold; color:#444; }
+    .contact-form input[type="text"],
+    .contact-form input[type="tel"],
+    .contact-form select,
+    .contact-form textarea { width:100%; padding:12px; margin-bottom:15px; border:1px solid #ddd; border-radius:6px; box-sizing:border-box; font-size:1rem; }
+    .contact-form textarea { resize:vertical; }
+
+    /* 강조 박스 스타일 */
+    .highlight-box { background:#fff3e0; border:1px solid #ffcc80; padding:20px; border-radius:8px; margin:20px 0; font-size:0.95rem; line-height:1.6; color:#7d570c; }
+    .highlight-box strong { color:#e65100; font-weight:bold; }
+
+    /* 반응형 디자인 */
+    @media(max-width:768px) {
+      header { padding:30px 15px; }
+      h1 { font-size:2rem; }
+      h2 { font-size:1.6rem; }
+      h3 { font-size:1.4rem; }
+      main { margin:10px auto; padding:10px; }
+      section { padding:20px; }
+      nav ul { flex-direction: column; text-align: center; }
+      nav li { margin:5px 0; }
+      .btn-cta { width:100%; padding:14px 0; font-size:1rem; }
+      table, thead, tbody, th, td, tr { display: block; }
+      thead tr { position: absolute; top: -9999px; left: -9999px; }
+      tr { border: 1px solid #e0eaf6; margin-bottom: 15px; border-radius:8px; }
+      td { border: none; position: relative; padding-left: 50%; text-align: right; }
+      td:before { position: absolute; top: 0; left: 6px; width: 45%; padding-left: 10px; white-space: nowrap; text-align: left; font-weight: bold; }
+    }
+    .anchor { display:block; position:relative; top:-80px; visibility:hidden; }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>23평 인테리어 비용: 2026년 최신 견적, 평균 금액 및 절감 팁 총정리</h1>
+    <p>23평 아파트 리모델링, 내돈내산 후기 기반 합리적인 비용 가이드라인 제시</p>
+    <a class="btn-cta" href="#contact">맞춤 인테리어 견적 3초 만에 받기</a>
+  </header>
+
+  <main>
+    <nav aria-label="페이지 내 이동">
+      <ul>
+        <li><a href="#definition">23평 인테리어 정의</a></li>
+        <li><a href="#cost-guide">2026년 견적 가이드</a></li>
+        <li><a href="#cost-factors">비용에 영향을 주는 요소</a></li>
+        <li><a href="#checklist">필수 체크리스트</a></li>
+        <li><a href="#saving-tips">비용 절감 노하우</a></li>
+        <li><a href="#local-compare">지역별 비용 비교</a></li>
+        <li><a href="#faq">자주 묻는 질문</a></li>
+        <li><a href="#contact">무료 견적 상담</a></li>
+      </ul>
     </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+    <section id="definition">
+      <span class="anchor" id="definition-anchor"></span>
+      <h2>23평 인테리어: 합리적인 공간 활용의 시작</h2>
+      <p>23평(약 76m²) 아파트는 대한민국에서 가장 일반적인 주거 형태 중 하나입니다. 주로 방 2~3개, 욕실 1~2개로 구성되어 신혼부부나 1~2인 가구에게 인기가 높습니다. 최근 몇 년간 주택 가격 상승과 1인 가구 증가 추세로 인해 23평 인테리어에 대한 수요가 급증하고 있습니다. 2026년 현재, 단순히 노후된 부분을 수리하는 것을 넘어, 라이프스타일에 맞춘 맞춤형 공간으로 변화시키려는 인테리어 트렌드가 강하게 나타나고 있습니다. 특히, 좁은 공간을 넓어 보이게 하는 미니멀리즘 디자인과 효율적인 수납공간 확보에 중점을 둔 리모델링이 주를 이룹니다.</p>
+
+      <h3>23평 인테리어의 장점과 단점</h3>
+      <div class="highlight-box">
+        <h4>장점 (20평대 인테리어)</h4>
+        <ul>
+          <li><strong>비용 효율성:</strong> 30평대 이상 대형 평수에 비해 총 인테리어 비용이 상대적으로 낮아 예산 부담이 적습니다.</li>
+          <li><strong>빠른 공사 기간:</strong> 공사 범위가 좁아 전체 리모델링 시에도 3~4주 이내로 완료되는 경우가 많아 생활 불편 기간을 최소화할 수 있습니다.</li>
+          <li><strong>공간 활용의 극대화:</strong> 제한된 공간을 효율적으로 사용하기 위한 다양한 디자인(예: 확장, 가변형 벽체)을 적용하기 좋습니다.</li>
+        </ul>
+        <h4>단점 및 고려 사항</h4>
+        <ul>
+          <li><strong>제한적인 확장성:</strong> 대형 가구 배치나 다이닝 공간 확보에 어려움이 있을 수 있어, 사전에 정확한 공간 설계가 필수입니다.</li>
+          <li><strong>수납공간 부족:</strong> 수납을 위해 벽면을 활용하는 붙박이장이나 빌트인 가구 시공이 중요하며, 이로 인해 평당 비용이 증가할 수 있습니다.</li>
+          <li><strong>구조 변경의 어려움:</strong> 구축 아파트의 경우 내력벽 여부 등 건축법상 제약이 있어, 원하는 대로 구조를 변경하지 못할 수 있습니다.</li>
+        </ul>
+      </div>
+
+      <p>23평 아파트 리모델링은 가구 배치와 동선을 최적화하는 것이 핵심입니다. 단순히 예쁜 디자인을 따라가기보다는, 거주자의 생활 습관에 맞춰 수납, 조명, 공간 분할 계획을 세워야 만족도가 높아집니다. 특히, 2026년 인테리어 트렌드에 맞춰 유행을 타지 않는 모던하고 심플한 디자인을 선호하는 경향이 있습니다.</p>
+    </section>
+
+    <section id="cost-guide">
+      <span class="anchor" id="cost-guide-anchor"></span>
+      <h2>2026년 23평 인테리어 평균 비용 가이드라인</h2>
+      <p>인테리어 비용은 공사 범위(부분/전체), 자재 등급, 시공 업체, 지역 등에 따라 천차만별입니다. 2026년 기준, 23평 아파트 인테리어 평균 평당 비용은 <strong>150만 원에서 250만 원 사이</strong>로 형성되어 있으며, 전체 공사 금액은 <strong>약 3,500만 원에서 6,000만 원</strong> 수준입니다. 이는 철거부터 마감까지 모든 과정을 포함한 올수리 기준이며, 부분 리모델링이나 셀프 인테리어는 이보다 훨씬 저렴할 수 있습니다.</p>
+
+      <h3>23평 인테리어 비용: 공사 범위별 예상 금액 비교 (2026년 기준)</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>구분</th>
+            <th>공사 범위</th>
+            <th>평균 예상 비용 (₩)</th>
+            <th>특징</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>부분 인테리어 (가성비)</td>
+            <td>도배, 장판/마루 교체, 욕실 1개, 싱크대 교체 등 필수 항목만 진행</td>
+            <td>1,000만원 ~ 2,000만원</td>
+            <td>거주 중에도 공사 가능, 예산 절감에 효과적</td>
+          </tr>
+          <tr>
+            <td>표준 전체 리모델링 (올수리)</td>
+            <td>전체 철거, 샷시 교체, 욕실 2개, 주방 전체, 도배, 마루, 조명, 문 교체 포함</td>
+            <td>3,500만원 ~ 5,000만원</td>
+            <td>가장 일반적인 범위, 구축 아파트 노후화 개선에 적합</td>
+          </tr>
+          <tr>
+            <td>프리미엄 전체 리모델링</td>
+            <td>표준 올수리 + 시스템 에어컨, 빌트인 가구, 수입 자재(타일, 마루), 구조 변경 등 고급 마감</td>
+            <td>5,000만원 ~ 8,000만원+</td>
+            <td>고급스러운 마감과 높은 디자인 완성도, 전문 인테리어 디자이너 필수</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>공사 항목별 상세 비용 (23평 기준)</h3>
+      <ul>
+        <li><strong>주방 인테리어 (싱크대, 타일):</strong> 800만원 ~ 1,500만원 (가구 등급 및 브랜드에 따라 상이)</li>
+        <li><strong>욕실 리모델링 (1개소):</strong> 500만원 ~ 800만원 (자재 및 방수 여부에 따라 상이)</li>
+        <li><strong>바닥재 (강마루/강화마루):</strong> 300만원 ~ 600만원 (자재 종류 및 시공 난이도에 따라 상이)</li>
+        <li><strong>도배 (실크벽지/합지):</strong> 200만원 ~ 350만원 (벽지 종류 및 평수에 따라 상이)</li>
+        <li><strong>샷시 교체 (확장 포함):</strong> 1,000만원 ~ 1,500만원 (샷시 브랜드 및 확장 여부에 따라 상이)</li>
+        <li><strong>전기 및 조명:</strong> 200만원 ~ 400만원 (매립 조명, 시스템 조명 여부에 따라 상이)</li>
+        <li><strong>철거 및 목공:</strong> 400만원 ~ 800만원 (구조 변경 및 공사 범위에 따라 상이)</li>
+      </ul>
+    </section>
+
+    <section id="cost-factors">
+      <span class="anchor" id="cost-factors-anchor"></span>
+      <h2>23평 인테리어 비용에 영향을 미치는 핵심 요소 분석</h2>
+      <p>단순히 평당 가격만으로 인테리어 예산을 판단해서는 안 됩니다. 23평 인테리어 견적은 여러 변수에 의해 크게 달라지기 때문입니다. 특히, 아파트의 연식과 기존 상태, 그리고 어떤 자재를 선택하느냐에 따라 총 금액이 최대 2배 이상 차이 날 수 있습니다.</p>
+
+      <h3>1. 아파트 연식과 상태 (구축 vs 신축)</h3>
+      <p><strong>구축 아파트 (20년 이상):</strong> 23평 구축 아파트는 인테리어 비용이 신축 아파트에 비해 높게 책정되는 경우가 많습니다. 오래된 아파트는 단순 미관 개선뿐만 아니라 누수, 배관 부식, 전기 배선 노후화 등 근본적인 문제를 해결해야 하기 때문입니다. 특히 샷시 교체나 단열 보강 공사는 필수적으로 권장되며, 이는 비용 상승의 주요 원인이 됩니다.</p>
+      <p><strong>신축 아파트 (5년 이내):</strong> 신축 아파트는 상대적으로 기본적인 시설이 잘 갖춰져 있어 부분적인 리모델링만으로도 충분한 효과를 볼 수 있습니다. 샷시나 배관 교체 비용이 발생하지 않아 비용 절감에 유리합니다. 주로 필름 시공, 조명 교체, 붙박이장 설치 등 디자인적 요소를 보강하는 방향으로 진행됩니다.</p>
+
+      <h3>2. 공사 범위와 자재 등급</h3>
+      <p><strong>올수리 vs 부분수리:</strong> 23평 올수리(전체 리모델링)는 철거부터 모든 마감재 교체까지 포함하므로 당연히 비용이 높습니다. 반면, 부분 수리는 필요한 공간(예: 주방, 욕실)만 선택적으로 공사하여 예산을 절약할 수 있습니다.</p>
+      <p><strong>자재 선택:</strong> 인테리어 자재 등급은 견적의 핵심 요소입니다. 국산 기본 마루(강마루)를 선택하느냐, 수입 원목마루를 선택하느냐에 따라 비용이 수백만 원에서 수천만 원까지 차이 납니다. 조명, 타일, 주방가구(싱크대) 역시 마찬가지입니다. 내돈내산 후기를 보면, 인테리어 비용 절감 팁으로 자재를 직접 구매하는 경우가 많습니다.</p>
+
+      <h3>3. 인건비 및 철거 난이도</h3>
+      <p>인테리어 비용의 60% 이상은 인건비입니다. 2026년 건설 인건비 상승 추세는 인테리어 비용 상승의 주요 원인입니다. 특히, 23평 아파트라도 철거 난이도에 따라 비용이 달라집니다. 기존 구축 아파트의 경우, 샷시 철거, 욕실 전체 철거, 불필요한 벽체 철거 등 난이도 높은 작업이 추가될 수 있습니다.</p>
+
+      <div class="highlight-box">
+        <h4>중요 체크: 23평 인테리어 시 추가 비용 발생 요소</h4>
+        <p>인테리어 계약 시 견적서에 포함되지 않아 나중에 추가 비용이 발생할 수 있는 항목들입니다. 사전에 반드시 확인해야 합니다.</p>
+        <ul>
+          <li><strong>확장 공사:</strong> 거실 확장, 방 확장 시 단열, 난방 배관 연장, 샷시 교체 비용이 추가됩니다.</li>
+          <li><strong>시스템 에어컨:</strong> 배관 매립 공사로 인해 목공 작업이 동반되어 비용이 상승합니다.</li>
+          <li><strong>구조 변경 및 철거:</strong> 싱크대 위치 변경을 위한 설비 이동, 벽체 철거 등은 추가 비용이 발생합니다.</li>
+          <li><strong>폐기물 처리:</strong> 철거 후 발생하는 폐기물 처리 비용은 별도로 청구되는 경우가 많습니다.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="saving-tips">
+      <span class="anchor" id="saving-tips-anchor"></span>
+      <h2>23평 인테리어 비용 절감 노하우 (내돈내산 팁)</h2>
+      <p>합리적인 금액으로 23평 리모델링을 완성하려면 몇 가지 핵심 노하우를 알아야 합니다. 2026년 최신 인테리어 트렌드와 함께 비용을 절약할 수 있는 실질적인 방법을 제시합니다. 많은 사람들이 인테리어 업체 순위를 찾아보며 저렴한곳을 찾지만, 무조건 싼 곳보다는 '합리적으로' 비용을 아끼는 것이 중요합니다.</p>
+
+      <h3>1. 자재 직접 구매 (직영 시공팀 활용)</h3>
+      <p>자재비를 절약하는 가장 확실한 방법은 인테리어 업체에 맡기지 않고, 고객이 직접 온라인몰이나 자재 매장에서 구매하는 것입니다. 특히 조명, 타일, 주방가전, 도어 등은 유통 마진이 상당하므로 직접 구매 시 10~30% 이상 절감할 수 있습니다. 업체에는 시공비만 지급하고 자재는 직접 준비하면 됩니다. 이 경우, 자재 배송 일정과 시공 일정을 정확히 조율해야 합니다.</p>
+
+      <h3>2. 비교 견적 활용 및 공사 범위 명확화</h3>
+      <p>최소 3개 이상의 인테리어 업체에 견적을 의뢰하여 비교해야 합니다. 동일한 공사 범위라도 업체별로 견적이 최대 30%까지 차이가 날 수 있습니다. 단순히 총액만 비교하는 것이 아니라, 견적서의 세부 항목(자재 브랜드, 규격, 시공비 포함 여부)을 꼼꼼히 확인해야 합니다. 견적 비교 플랫폼(예: 숨고, 집닥)을 활용하는 것도 좋은 방법입니다.</p>
+
+      <h3>3. 부분 리모델링 및 필름 시공 적극 활용</h3>
+      <p>전체 올수리가 아닌 부분 리모델링만으로도 23평의 분위기를 크게 바꿀 수 있습니다. 특히 샷시나 문짝을 교체하는 대신 인테리어 필름을 시공하면 비용을 크게 절감할 수 있습니다. 필름 시공은 신축 느낌을 내면서도 비용은 교체의 1/3 수준입니다.</p>
+      <div class="highlight-box">
+        <h4>비용 절감 핵심 포인트</h4>
+        <ul>
+          <li><strong>욕실 부분 수리:</strong> 타일 전체 철거 대신 덧방 시공 (비용 및 기간 절약)</li>
+          <li><strong>가구 선택:</strong> 붙박이장 대신 기성 가구 활용 (자유로운 배치 가능)</li>
+          <li><strong>조명:</strong> 화려한 메인 조명 대신 매립등이나 간접 조명 활용 (깔끔한 디자인 + 비용 절감)</li>
+        </ul>
+      </div>
+
+      <h3>4. 인테리어 시공 순서 최적화</h3>
+      <p>시공 순서를 잘못 정하면 추가 비용이 발생할 수 있습니다. 올바른 시공 순서는 <strong>철거 → 샷시 → 전기/배관 → 욕실 → 목공 → 도배/바닥 → 가구/조명</strong>입니다. 예를 들어, 도배 전에 바닥재 시공을 하면 재작업이 필요 없거나 바닥재 손상을 방지할 수 있습니다.</p>
+    </section>
+
+    <section id="checklist">
+      <span class="anchor" id="checklist-anchor"></span>
+      <h2>23평 인테리어 전 필수 체크리스트 (실패 없는 인테리어를 위해)</h2>
+      <ol>
+        <li><strong>예산 확정 및 목표 설정:</strong> 인테리어 비용은 무한정 늘어날 수 있습니다. 총 예산을 먼저 확정하고, 예산 범위 내에서 '포기할 것'과 '반드시 할 것'을 구분해야 합니다.</li>
+        <li><strong>시공 계획:</strong> 인테리어 시작 전 모든 가구 배치, 가전제품 크기(특히 냉장고, 세탁기), 조명 위치를 미리 결정해야 합니다. 시공 후 가구가 맞지 않아 재시공하는 사례가 많습니다.</li>
+        <li><strong>관리사무소 확인:</strong> 아파트 관리사무소에 인테리어 공사 허가 및 공사 기간, 소음 관련 민원 대처 방안을 사전에 협의해야 합니다. (특히 구축 아파트의 경우)</li>
+        <li><strong>견적서 세부 검토:</strong> 자재의 브랜드, 모델명, 수량, 단위(헤베, m), 시공 범위(전체 또는 부분)를 명확하게 확인하세요. '추가 비용 없음' 조항을 계약서에 명시하는 것이 좋습니다.</li>
+        <li><strong>구축 아파트 배관 및 전기 확인:</strong> 23평 구축 아파트는 누수나 전기 노후화 문제가 흔합니다. 철거 시 배관 상태를 확인하고, 문제가 있을 경우 교체하는 것을 고려해야 합니다.</li>
+        <li><strong>AS 기간 및 범위 확인:</strong> 업체 선정 시 시공 후 하자 보수 기간을 명시하고, 보수 범위(예: 샷시 5년, 기타 1년 등)를 계약서에 포함해야 합니다.</li>
+      </ol>
+      <div class="highlight-box">
+        <h4>중요: 인테리어 업체 선정 시 유의사항</h4>
+        <p>인테리어 업체 선정은 23평 리모델링의 성공 여부를 결정합니다. <strong>내돈내산 후기</strong>를 참고하여 해당 업체가 <strong>직영 시공팀</strong>을 운영하는지, <strong>AS 정책이 명확한지</strong> 확인해야 합니다.</p>
+      </div>
+    </section>
+
+    <section id="local-compare">
+      <span class="anchor" id="local-compare-anchor"></span>
+      <h2>전국 지역별 23평 인테리어 비용 비교 (서울, 경기, 부산 등)</h2>
+      <p>인테리어 비용은 인건비와 자재 유통 마진에 따라 지역별로 차이가 발생합니다. 2026년 기준으로, 서울 지역이 가장 높은 비용을 형성하며, 경기도와 광역시, 지방 순으로 비용이 낮아지는 경향이 있습니다.</p>
+
+      <h3>서울 및 수도권 지역</h3>
+      <p><strong>서울 (강남, 송파, 용산):</strong> 인테리어 디자인 트렌드를 선도하며 고급 자재 사용 비중이 높아 비용이 가장 높습니다. 23평 올수리 시 평균 5,000만 원 이상을 예상해야 합니다. 특히 재건축을 앞둔 구축 아파트의 경우, 최소한의 수리만 진행하거나 프리미엄 인테리어로 가치를 높이는 양극화 현상이 나타납니다.</p>
+      <p><strong>경기도 (수원, 성남, 용인, 고양, 하남, 화성, 평택):</strong> 서울보다는 인건비와 물류비가 소폭 낮지만, 신도시 지역이 많아 인테리어 수요가 높습니다. 23평 인테리어 비용은 서울과 유사한 수준에서 형성되며, 평택이나 화성 등 외곽 지역은 상대적으로 저렴한 업체도 많습니다.</p>
+
+      <h3>광역시 및 지방 지역</h3>
+      <p><strong>부산, 대구, 인천, 광주, 대전, 울산:</strong> 광역시 인테리어 시장은 수도권 다음으로 활발합니다. 23평 인테리어 비용은 수도권 대비 10~20%가량 낮게 형성되며, 경쟁이 치열하여 합리적인 금액의 업체를 찾기 쉽습니다. 특히 부산 해운대, 대구 수성구 등 지역별로 주거 환경과 트렌드가 뚜렷하여 맞춤형 디자인을 선호합니다.</p>
+      <p><strong>지방 소도시 (강릉, 전주, 청주, 창원):</strong> 상대적으로 인테리어 업체 수가 적고, 자재 수급이 제한적일 수 있습니다. 23평 인테리어 비용의 평균 금액은 낮지만, 고급 자재를 사용할 경우 오히려 수도권보다 비용이 더 높을 수 있습니다.</p>
+
+      <div class="highlight-box">
+        <h4>지역별 인테리어 비용 차이 요약</h4>
+        <ul>
+          <li><strong>서울 및 수도권:</strong> 높은 인건비와 고급 자재 선호로 고가 형성.</li>
+          <li><strong>광역시:</strong> 합리적인 경쟁으로 중가 형성.</li>
+          <li><strong>지방 소도시:</strong> 상대적으로 낮은 인건비, 자재 수급 난이도에 따라 변동성 높음.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="faq">
+      <span class="anchor" id="faq-anchor"></span>
+      <h2>자주 묻는 질문 (FAQ)</h2>
+      <dl>
+        <dt>Q1: 23평 인테리어 공사 기간은 얼마나 걸리나요?</dt>
+        <dd>A: 공사 범위에 따라 다릅니다. 부분 인테리어(도배, 장판 등)는 3~5일, 전체 올수리는 3~4주가 일반적입니다. 확장 공사나 시스템 에어컨 설치 등이 추가되면 1주 정도 연장될 수 있습니다.</dd>
+
+        <dt>Q2: 23평 아파트 리모델링 시 샷시 교체가 필수인가요?</dt>
+        <dd>A: 구축 아파트(20년 이상)의 경우 단열과 방풍을 위해 샷시 교체를 강력히 권장합니다. 샷시 교체만으로도 난방비 절감 효과가 커서 장기적으로 보면 비용 절감에 도움이 됩니다. 신축 아파트라면 필름 시공만으로 충분합니다.</dd>
+
+        <dt>Q3: 인테리어 비용 절감을 위해 셀프 인테리어를 추천하나요?</dt>
+        <dd>A: 23평 전체를 셀프로 진행하는 것은 전문가가 아닌 이상 매우 어렵습니다. 부분적인 셀프(예: 조명 교체, 페인트칠)는 비용을 아낄 수 있지만, 전문 시공(욕실, 샷시, 방수)은 반드시 전문가에게 맡겨야 하자 발생 위험을 줄일 수 있습니다.</dd>
+
+        <dt>Q4: 인테리어 계약 시 주의해야 할 점은 무엇인가요?</dt>
+        <dd>A: 계약서에 반드시 공사 일정, 추가 비용 발생 조건, 하자보수 기간을 명시해야 합니다. 구두 계약은 피하고, 사업자등록증과 인테리어 면허를 가진 업체를 선택하는 것이 안전합니다.</dd>
+
+        <dt>Q5: 인테리어 업체를 어떻게 비교하고 선정하나요?</dt>
+        <dd>A: 1) 내돈내산 후기와 포트폴리오를 확인하고, 2) 최소 3곳 이상의 업체에서 비교 견적을 받습니다. 3) 견적서 항목을 꼼꼼히 비교하여 과도하게 저렴하거나 비싼 업체를 피합니다.</dd>
+      </dl>
+    </section>
+
+    <section id="contact">
+      <span class="anchor" id="contact-anchor"></span>
+      <h2>23평 맞춤 인테리어 견적 상담 문의</h2>
+      <p>23평 아파트 리모델링에 대한 정확한 예상 금액이 궁금하신가요? 거주하시는 아파트의 연식과 원하는 공사 범위를 알려주시면, 2026년 최신 자재비 및 인건비를 반영한 맞춤형 견적을 무료로 제공해 드립니다. 하단의 양식을 작성하여 주시면 24시간 이내로 전문 컨설턴트가 연락드리겠습니다.</p>
+      <div class="contact-form">
+        <form action="/submit" method="POST">
+          <label for="name">이름<span style="color:red;">*</span></label>
+          <input type="text" id="name" name="name" required placeholder="예: 홍길동" />
+
+          <label for="phone">연락처<span style="color:red;">*</span></label>
+          <input type="tel" id="phone" name="phone" required placeholder="010-1234-5678" pattern="[0-9\-]+" />
+
+          <label for="address">현재 거주지 주소<span style="color:red;">*</span></label>
+          <input type="text" id="address" name="address" required placeholder="예: 경기도 수원시 영통구 ○○아파트" />
+
+          <label for="apt-age">아파트 건축 연도<span style="color:red;">*</span></label>
+          <select id="apt-age" name="apt_age" required>
+            <option value="">선택하세요</option>
+            <option value="5년 미만 (신축)">5년 미만 (신축)</option>
+            <option value="5년 ~ 10년 (준신축)">5년 ~ 10년 (준신축)</option>
+            <option value="10년 ~ 20년 (구축)">10년 ~ 20년 (구축)</option>
+            <option value="20년 이상 (구축)">20년 이상 (구축)</option>
+          </select>
+
+          <label for="project-scope">희망 인테리어 범위<span style="color:red;">*</span></label>
+          <select id="project-scope" name="project_scope" required>
+            <option value="">선택하세요</option>
+            <option value="전체 리모델링 (올수리)">전체 리모델링 (올수리)</option>
+            <option value="부분 리모델링 (주방, 욕실)">부분 리모델링 (주방, 욕실)</option>
+            <option value="도배 및 바닥재 교체">도배 및 바닥재 교체</option>
+            <option value="기타 (자유롭게 기재)">기타 (자유롭게 기재)</option>
+          </select>
+
+          <label for="target-date">희망 공사 시작 시점</label>
+          <input type="text" id="target-date" name="target_date" placeholder="예: 2026년 3월 예정" />
+
+          <label for="budget">예상 예산 범위 (전체 금액)</label>
+          <input type="text" id="budget" name="budget" placeholder="예: 3,000만원 ~ 4,000만원" />
+
+          <label for="message">추가 요청 사항 및 문의 내용</label>
+          <textarea id="message" name="message" rows="4" placeholder="예: 샷시 교체 여부, 주방 구조 변경 희망 등 상세 요청 사항을 기재해주세요."></textarea>
+
+          <button type="submit" class="btn-cta">무료 견적 요청하기</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  
